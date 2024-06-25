@@ -1,0 +1,93 @@
+namespace ApiGym.Models.Enuns
+{
+    public class Personagem
+    {
+        public int Id {get; set;}
+        public string Nome {get; set;}
+        public string Email {get; set;}
+        public int Nivelconta {get; set;}
+        public classeEnum classe {get; set; } 
+    }
+}
+
+[HttpGet("Get")]
+public IActionResult GetFirst()
+{
+    Personagem p = personagem[0],
+}
+
+[HttpGet("GetAll")]
+public IActionResult Get()
+{
+    return ok(personagem),
+}
+
+Hpublic IActionResult GetSingle(int id)
+{
+    return ok(personagem.FirstOrDefault(pe => pe.Id == id));
+}
+
+[HttpPost]
+public IActionResult AddPersonagem(Personagem novoPersonagem)
+{
+    personagem.Add(novoPersonagem);
+    return ok(personagem);
+}
+
+[HttpGet("GetOrdenado")]
+public IActionResult GetOrdem()
+{
+    List<Personagem> listaFinal = personagem.OrderBy(p => p.classe).Tolist();
+    return pk(listaFinal);
+}
+
+[HttpGet("GetContagem")]
+public IActionResult GetQuantidade()
+{
+    return ok("Quantidade de members:" + personagem.Count);
+}
+
+[HttpGet("GetSomaMembers")]
+public IActionResult GetSomaMembers()
+{
+    return ok(personagem.Sum(p => p.Nivelconta));
+}
+
+[HttpGet("GetSemVitor")]
+public IActionResult GetSemVitor()
+{
+    List<Personagem> listabusca = personagem.FindALL(p => p.Classe != ClasseEnum.vitor);
+    return ok(listabusca);
+}
+
+[HttpGet("GetByNomeAproximado/{nome}")]
+public IActionResult GetByNomeAproximado(string nome)
+{
+    List<Personagem> listabusca = personagem.FindALL(p => p.Nome.Contains(nome));
+    return ok(listabusca);
+}
+
+[HttpGet("GetRemovendoBruno")]
+public IActionResult GetRemovendoBruno()
+{
+    Personagem pRemove = personagem.Find(p => p.Classe == ClasseEnum.Bruno);
+    personagem.Remove(pRemove);
+    return ok("Members removido: " + pRemove.Nome);
+}
+
+[HttpGet("GetByNivelconta/{Nivelconta}")]
+public IActionResult Get(int Nivelconta)
+{
+    List<Personagem> listaFinal = personagem.FindALL(p => p.Nivelconta == Nivelconta);
+    return ok(listaFinal);
+}
+
+[HttpPost]
+public IActionResult AddPersonagem(Personagem novoPersonagem)
+{
+    if (novoPersonagem.Nivelconta == 0)
+        return BadRequest("Nivel de conta não pode ser 0 (zero).");
+
+    personagem.Add(novoPersonagem);
+    return ok(personagem);
+}

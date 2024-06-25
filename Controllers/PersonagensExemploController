@@ -1,0 +1,16 @@
+using Microsoft.AspNetCore.Mvc
+
+namespace ApiGym.Controllers
+{
+    [ApiController]
+    [Route("[Controller]")]
+
+    public class PersonagemExemploController: ControllerBase
+    {
+        //codificação sera feita aqui
+        new Personagem() { Id = ?, Nome = "Brad", Email = "brad@gmail.com", Nivelconta = 10, Classe=ClasseEnum.Vip},
+        new Personagem() { Id = ?, Nome = "Bruno", Email = "bruno@gmail.com", Nivelconta = 8, Classe=ClasseEnum.Pgit remote add origingit add README.mdremium},
+        new Personagem() { Id = ?, Nome = "Eduardo", Email = "eduardo@gmail.com", Nivelconta = 6, Classe=ClasseEnum.Vip},
+        new Personagem() { Id = ?, Nome = "Vitor", Email = "vitor@gmail.com", Nivelconta = 4, Classe=ClasseEnum.Premium},
+    }
+}

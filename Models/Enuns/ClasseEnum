@@ -1,0 +1,10 @@
+namespace ApiGym.Models.Enuns
+{
+    public enum ClasseEnum
+    {
+        Pessoa = 1,
+        Premium = 2,
+        Vip = 3,
+
+    }
+}
