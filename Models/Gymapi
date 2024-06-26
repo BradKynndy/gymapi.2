@@ -1,6 +1,8 @@
+using ApiGym.Models.Enuns;
+
 namespace ApiGym.Models.Enuns
 {
-    public class Personagem
+    public class Members
     {
         public int Id {get; set;}
         public string Nome {get; set;}
@@ -13,81 +15,150 @@ namespace ApiGym.Models.Enuns
 [HttpGet("Get")]
 public IActionResult GetFirst()
 {
-    Personagem p = personagem[0],
+    Members p = Members[0],
 }
 
 [HttpGet("GetAll")]
 public IActionResult Get()
 {
-    return ok(personagem),
+    return ok(Members),
 }
 
 Hpublic IActionResult GetSingle(int id)
 {
-    return ok(personagem.FirstOrDefault(pe => pe.Id == id));
+    return ok(Members.FirstOrDefault(pe => pe.Id == id));
 }
 
 [HttpPost]
-public IActionResult AddPersonagem(Personagem novoPersonagem)
+public IActionResult AddMembers(Members novoMembers)
 {
-    personagem.Add(novoPersonagem);
-    return ok(personagem);
+    Members.Add(novoMembers);
+    return ok(Members);
 }
 
 [HttpGet("GetOrdenado")]
 public IActionResult GetOrdem()
 {
-    List<Personagem> listaFinal = personagem.OrderBy(p => p.classe).Tolist();
+    List<Members> listaFinal = Members.OrderBy(p => p.classe).Tolist();
     return pk(listaFinal);
 }
 
 [HttpGet("GetContagem")]
 public IActionResult GetQuantidade()
 {
-    return ok("Quantidade de members:" + personagem.Count);
+    return ok("Quantidade de members:" + Members.Count);
 }
 
 [HttpGet("GetSomaMembers")]
 public IActionResult GetSomaMembers()
 {
-    return ok(personagem.Sum(p => p.Nivelconta));
+    return ok(Members.Sum(p => p.Nivelconta));
 }
 
 [HttpGet("GetSemVitor")]
 public IActionResult GetSemVitor()
 {
-    List<Personagem> listabusca = personagem.FindALL(p => p.Classe != ClasseEnum.vitor);
+    List<Members> listabusca = Members.FindALL(p => p.Classe != ClasseEnum.vitor);
     return ok(listabusca);
 }
 
 [HttpGet("GetByNomeAproximado/{nome}")]
 public IActionResult GetByNomeAproximado(string nome)
 {
-    List<Personagem> listabusca = personagem.FindALL(p => p.Nome.Contains(nome));
+    List<Members> listabusca = Members.FindALL(p => p.Nome.Contains(nome));
     return ok(listabusca);
 }
 
 [HttpGet("GetRemovendoBruno")]
 public IActionResult GetRemovendoBruno()
 {
-    Personagem pRemove = personagem.Find(p => p.Classe == ClasseEnum.Bruno);
-    personagem.Remove(pRemove);
+    Members pRemove = Members.Find(p => p.Classe == ClasseEnum.Bruno);
+    Members.Remove(pRemove);
     return ok("Members removido: " + pRemove.Nome);
 }
 
 [HttpGet("GetByNivelconta/{Nivelconta}")]
 public IActionResult Get(int Nivelconta)
 {
-    List<Personagem> listaFinal = personagem.FindALL(p => p.Nivelconta == Nivelconta);
+    List<Members> listaFinal = Members.FindALL(p => p.Nivelconta == Nivelconta);
     return ok(listaFinal);
 }
 
 [HttpPost]
-public IActionResult AddPersonagem(Personagem novoPersonagem)
+public IActionResult AddMembers(Members novoMembers)
 {
-    if (novoPersonagem.Nivelconta == 0)
+    if (novoMembers.Nivelconta == 0)
         return BadRequest("Nivel de conta não pode ser 0 (zero).");
 
-    personagem.Add(novoPersonagem);
-    return ok(personagem);
+    Members.Add(novoMembers;
+    return ok(Members);
+}
+
+[HttpGet("{id}")]
+public async Task<IActionResult> GetSingle(int id)
+{
+    try
+    {
+        Members p = await _context.TB_MEMBERS
+            .FirstOrDefaultAsync(pBusca => pBusca.id == id);
+
+        return ok(p);
+    }
+    catch (System.Ex)
+    {
+        return BandRequest(ex.Message);
+    }
+}
+
+[HttpGet("GetAll")]
+public async Task<IActionResult> Get()
+{
+    try
+    {
+        List<Members> lista = await _context.TB_MEMBERS.ToListeAsync();
+        return ok(p);
+    }
+    catch (System.Ex)
+    {
+        return BandRequest(ex.Message);
+    }
+}
+
+[HttpGet]
+public async Task<IActionResult> Add(Members novoMembers)
+{
+    try
+    {
+        if (novoMembers.Nivelconta >3)
+        {
+            throw new Exeption("Nivel de conta não pode ser maior que 3");
+        }
+        await _context.TB_MEMBERS.AddAsync(novoMembers);
+        await _context.SaveChangesAsync();
+
+        return ok (novoMembers.Id);
+    {
+    catch (System.Exeption ex)
+    {
+        return BadRequest(ex.Message);
+    }
+    
+}
+
+[HttpGet]
+public async Task<IActionReylt> Delete(int id)
+{
+    try
+    {
+        Members pRemover = await.TB_MEMBERS.FirstOrDefault(p => p.id == id);
+
+        _context.TB_MEMBERS.Remove(pRemover);
+        int linhaAfetadas = await _context.SaveChangesAsync();
+        return ok(linhaAfetadas);
+    }
+    catch (System. Exeption ex)
+    {
+        return BadRequest(ex.Message);
+    }
+}
 }

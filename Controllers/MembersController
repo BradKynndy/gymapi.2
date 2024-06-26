@@ -1,0 +1,17 @@
+using Microsoft.AspNetCore.Mvc;
+
+namespace Gymapi.Controller
+{
+    [ApiController]
+    [Route("[Controller]")]
+    public class MembersControllers : Controller
+    {
+        private readonly DataContext_context;
+
+        public MembersControllers(DataContext context)
+        {
+            _context = context;
+        }
+
+    }
+}

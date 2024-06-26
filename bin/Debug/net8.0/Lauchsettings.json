@@ -1,0 +1,12 @@
+{
+"CompDS":
+{
+    "commandName": "Project",
+    "launchBrowser": true,
+    "LauncUrl": "weatherforcecast",
+    "applicationUrl":,
+    "envieonmwnrVariavbles": {
+        "ASPNETCORE_ENVIROMENT": "Development"
+    }
+}
+}

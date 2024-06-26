@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bkynn\\OneDrive\\Área de Trabalho\\api-gym\\api-gym.csproj": {}
+    "C:\\Users\\bkynn\\gymapi.2\\api-gym.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bkynn\\OneDrive\\Área de Trabalho\\api-gym\\api-gym.csproj": {
+    "C:\\Users\\bkynn\\gymapi.2\\api-gym.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bkynn\\OneDrive\\Área de Trabalho\\api-gym\\api-gym.csproj",
+        "projectUniqueName": "C:\\Users\\bkynn\\gymapi.2\\api-gym.csproj",
         "projectName": "api-gym",
-        "projectPath": "C:\\Users\\bkynn\\OneDrive\\Área de Trabalho\\api-gym\\api-gym.csproj",
+        "projectPath": "C:\\Users\\bkynn\\gymapi.2\\api-gym.csproj",
         "packagesPath": "C:\\Users\\bkynn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bkynn\\OneDrive\\Área de Trabalho\\api-gym\\obj\\",
+        "outputPath": "C:\\Users\\bkynn\\gymapi.2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bkynn\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,6 +44,16 @@
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.6, )"
             },

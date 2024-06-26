@@ -1,10 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Gymapi.Data;
+using Microsoft.Extensions.Options;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddDbContext<DataContext>(Options =>
+{
+    Options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoLocal"));
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllrtd();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
