@@ -14,4 +14,37 @@ namespace Gymapi.Controller
         }
 
     }
+
+    private async Task<bool> UsuarioExistente(string username)
+    {
+        if (await _context.TB_MEMBERS.AnyAsync(x => x.username.ToLower() == username.ToLower))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    [HttpPost("Registrar")]
+    public async Task<IActionResult> RegistrarUsuario (Usuario user)
+    {
+        try
+        {
+            (await UsuarioExistente (user.Username))
+                throw new System.Exception("Nome de usuário já existe");
+
+            Criptografia.CriarPasswordHash(user.PasswordString, out byte[] hash, out byte[] salt);
+            user.Passwordstring string.Empty; 
+            user.PasswordHash = hash;
+            user.Passwordsalt salt,
+            await_context.TB_MEMBERS.AddAsync(user); 
+            await_context.SaveChangesAsync();
+
+            return ok(user.Id);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
 }
+
+//fazer passo 5 slide até passo 9 11.1

@@ -20,8 +20,8 @@ namespace Gymapi.Data
                 new Members() { Id = 01, Nome = "Brad", Email = "brad@gmail.com", Nivelconta = 10, Classe=ClasseEnum.Vip},
                 new Members() { Id = 02, Nome = "Bruno", Email = "bruno@gmail.com", Nivelconta = 8, Classe=ClasseEnum.Premium},
                 new Members() { Id = 03, Nome = "Eduardo", Email = "eduardo@gmail.com", Nivelconta = 6, Classe=ClasseEnum.Vip},
-                new Members() { Id = 04, Nome = "Vitor", Email = "vitor@gmail.com", Nivelconta = 4, Classe=ClasseEnum.Premium},
-            )
+                new Members() { Id = 04, Nome = "Vitor", Email = "vitor@gmail.com", Nivelconta = 4, Classe=ClasseEnum.Pessoa}
+            );
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder ConfigurationBuilder)

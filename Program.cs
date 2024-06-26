@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Gymapi.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 
@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>(Options =>
 {
-    Options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoLocal"));
+    Options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoSomee"));
 });
 
 builder.Services.AddEndpointsApiExplorer();
